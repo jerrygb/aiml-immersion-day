@@ -1,0 +1,23 @@
+name: tutorial
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      train: {type: path}
+      validation: {type: path}
+      model_dir: {type: path}
+      max_depth: {type: int, default: 5}
+      eta: {type: float, default: 0.2}
+      gamma: {type: int, default: 4}
+      min_child_weight: {type: int, default: 6}
+      eta: {type: float, default: 0.2}
+      subsample: {type: float, default: 0.8}
+      silent: {type: int, default: 0}
+      objective: {type: string, default: "binary:logistic"}
+      num_round: {type: int, default: 50}
+    command: "python train.py --train {train} --validation {validation} --model-dir {model_dir} \
+                    --max-depth {max_depth} --eta {eta} --gamma {gamma} --min-child-weight {min_child_weight} \
+                    --eta {eta} --subsample {subsample} --silent {silent} --objective {objective} \
+                    --num-round {num_round}"
